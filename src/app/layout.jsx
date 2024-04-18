@@ -17,11 +17,11 @@ export default function RootLayout({ children }) {
         <main className="block space-y-8 py-12">
           <Search />
 
-          <div className="grid min-h-screen gap-4 grid-cols-3">
+          <div className="grid min-h-screen gap-4 grid-cols-4 px-4">
             <div className="col-span-1">
               <Sidebar />
             </div>
-            <div className="col-span-2">{children}</div>
+            <div className="col-span-3">{children}</div>
           </div>
         </main>
       </body>

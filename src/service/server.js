@@ -107,6 +107,27 @@ export class Service {
       };
     }
   }
+
+  async getScrappedData(id) {
+    try {
+      const collectorDocument = await this.databases.getDocument(
+        conf.appwriteDatabaseId,
+        conf.appwriteCollectionId,
+        id
+      );
+
+      return {
+        success: true,
+        message: "Queries Fetched",
+        data: collectorDocument,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error?.message || "Internal Server Error",
+      };
+    }
+  }
 }
 
 const service = new Service();

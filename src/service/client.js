@@ -43,8 +43,8 @@ export class Service {
         conf.appwriteCollectionId
       );
 
-      const NonEmptyCollectorDocument = allCollectorDocument.documents.map(
-        (d) => d.collectionId
+      const NonEmptyCollectorDocument = allCollectorDocument.documents.filter(
+        (d) => d.collections
       );
 
       return {
