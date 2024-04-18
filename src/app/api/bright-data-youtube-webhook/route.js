@@ -15,15 +15,12 @@ export async function POST(request) {
     }
   })();
 
-  const { success } = await service.insertScrappedData(data);
+  const response = await service.insertScrappedData(body);
 
-  return NextResponse.json(
-    { success },
-    {
-      status: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    }
-  );
+  return NextResponse.json(response, {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+  });
 }
