@@ -25,7 +25,7 @@ export class Service {
         conf.appwriteCollectionId
       );
 
-      const emptyCollectorDocument = allCollectorDocument.documents.map(
+      const emptyCollectorDocument = allCollectorDocument.documents.filter(
         (d) => !d.collectionId
       );
 
@@ -79,17 +79,17 @@ export class Service {
         conf.appwriteCollectionId
       );
 
-      const emptyCollectorDocument = allCollectorDocument.documents.map(
+      const emptyCollectorDocument = allCollectorDocument.documents.filter(
         (d) => !d.collectionId
       );
 
       if (emptyCollectorDocument.length === 0)
         throw new Error("No pending collection available");
 
-      const document = await this.databases.createDocument(
+      const document = await this.databases.updateDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        data.collection_id,
+        emptyCollectorDocument[0].$id,
         {
           collections: data ? JSON.stringify(data) : null,
         }
