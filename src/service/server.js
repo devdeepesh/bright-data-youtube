@@ -32,7 +32,6 @@ export class Service {
       if (emptyCollectorDocument.length > 0)
         throw new Error("We already have a pending request, please wait...");
 
-      throw new Error("avai");
       // Trigger Web Scrapping
       const response = await fetch(
         `https://api.brightdata.com/dca/trigger?collector=${conf.brightDataCollectorId}&queue_next=1`,
